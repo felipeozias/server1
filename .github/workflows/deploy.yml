@@ -13,5 +13,5 @@ jobs:
       - name: deploy
         uses: fjogeleit/http-request-action@v1
         with:
-        #   url: "${{ secrets.PRODUCTION_DEPLOY_KEY }}"
-          url: "https://api.render.com/deploy/${{ secrets.PRODUCTION_KEY }}&ref=${{ github.sha }}"
+          url: "${{ secrets.PRODUCTION_DEPLOY_KEY }}"
+        #   url: "https://api.render.com/deploy/${{ secrets.PRODUCTION_KEY }}&ref=${{ github.sha }}"
