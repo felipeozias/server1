@@ -32,4 +32,4 @@ jobs:
         uses: fjogeleit/http-request-action@v1
         with:
           # url: "${{ secrets.STAGIN_DEPLOY_KEY }}"
-          url: "https://api.render.com/deploy/${{ secrets.STAGING_KEY }}&ref=${{ github.sha }}"
+          url: "https://api.render.com/deploy/${{ secrets.STAGIN_KEY }}&ref=${{ github.sha }}"
