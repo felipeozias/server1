@@ -15,7 +15,7 @@ describe("GET /todo", () => {
 
     const response = await request.get("/todo");
 
-    expect(response.status).toBe(400);
+    expect(response.status).toBe(200);
 
     expect(response.body).toEqual([{ id: 10, descricao: "teste" }]);
   });
