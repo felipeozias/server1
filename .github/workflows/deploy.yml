@@ -9,12 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref_name == 'main'
     steps:
-      - name: Carregando variáveis de ambiente
-        uses: actions-ecosystem/action-dotenv@v2
-        with:
-          dotenv_path: .env
-
       - name: deploy
         uses: fjogeleit/http-request-action@v1
         with:
-          url: "$PRODUCTION"
+          url: "${{ secrets.PRODUCTION_DEPLOY_KEY }}"

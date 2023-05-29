@@ -34,5 +34,4 @@ jobs:
       - name: deploy
         uses: fjogeleit/http-request-action@v1
         with:
-          url: "$STAGING"
-          # url: "https://api.render.com/deploy/${{ secrets.STAGING_DEPLOY_KEY }}&ref=${{ github.sha }}"
+          url: "${{ secrets.STAGIN_DEPLOY_KEY }}"
