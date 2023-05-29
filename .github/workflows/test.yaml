@@ -8,7 +8,7 @@ on:
       - completed
 
 jobs:
-  sucesso:
+  teste:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
@@ -21,10 +21,18 @@ jobs:
       - name: Testanto aplicação com Jest
         run: yarn test && echo '🟢🟢🟢 OS TESTES PASSARAM 🚀'
 
-  # falha:
-  #   runs-on: ubuntu-latest
-  #   if: ${{ github.event.workflow_run.conclusion == 'failure' }}
-  #   steps:
-  #     - name: Ocorreu falha no build
-  #       run: echo '🔴🔴🔴 TESTES NÃO REALIZADOS POIS OCORREU FALHA NO BUILD'
-        
+  deploy-staging:
+    runs-on: ubuntu-latest
+    needs: [teste]
+    if: github.ref_name == 'main'
+    steps:
+      - name: Carregando variáveis de ambiente
+        uses: actions-ecosystem/action-dotenv@v2
+        with:
+          dotenv_path: .env
+
+      - name: deploy
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: "$STAGING"
+          # url: "https://api.render.com/deploy/${{ secrets.STAGING_DEPLOY_KEY }}&ref=${{ github.sha }}"
