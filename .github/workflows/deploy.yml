@@ -8,6 +8,7 @@ jobs:
   deploy-production:
     runs-on: ubuntu-latest
     if: github.ref_name == 'main'
+    
     steps:
       - name: deploy
         uses: fjogeleit/http-request-action@v1
