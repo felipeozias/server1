@@ -11,7 +11,7 @@ jobs:
   teste:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    
+
     steps:
       - name: Checkout código-fonte
         uses: actions/checkout@v3
@@ -31,4 +31,5 @@ jobs:
       - name: deploy
         uses: fjogeleit/http-request-action@v1
         with:
-          url: "${{ secrets.STAGIN_DEPLOY_KEY }}"
+          # url: "${{ secrets.STAGIN_DEPLOY_KEY }}"
+          url: "https://api.render.com/deploy/${{ secrets.STAGING_KEY }}&ref=${{ github.sha }}"
